@@ -1,0 +1,913 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('Wallpaper.png') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+
+.window {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  resize: both;
+  overflow: hidden;
+}
+#taskbar {
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.3);
+  border-top: 1px solid #999;
+}
+
+#desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 40px; /* keep above taskbar */
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.icon {
+  width: 80px;
+  height: 100px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon img {
+  width: 48px;
+  height: 48px;
+}
+
+.icon p {
+  margin-top: 5px;
+  font-size: 13px;
+  text-shadow: 0 1px 2px black;
+}
+
+
+.icon:hover {
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+}
+
+
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #999;
+  z-index: 9999;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+#start-button {
+  background: rgba(255,255,255,0.4);
+  border: 1px solid #999;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#taskbar-apps button {
+  margin-left: 6px;
+  background: rgba(255,255,255,0.4);
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+#taskbar-clock {
+  margin-left: auto;
+  color: #000;
+  font-size: 14px;
+  padding-right: 5px;
+}
+
+#start-menu {
+  position: fixed;
+  bottom: 45px;
+  left: 10px;
+  width: 260px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  display: none;
+  z-index: 10000;
+  padding: 10px;
+}
+
+#start-menu .start-header {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
+
+#start-menu ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#start-menu li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 6px;
+  background: rgba(240,240,240,0.8);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+#start-menu li:hover {
+  background: rgba(0,120,215,0.2);
+}
+
+.window.maximized {
+  border-radius: 0;
+  resize: none;
+}
+
+
+.window {
+  position: absolute;
+  width: 500px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid #999;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  overflow: hidden;
+  resize: both;
+  z-index: 10;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #d0e7ff, #f0f8ff);
+  padding: 6px 10px;
+  cursor: move;
+  font-weight: bold;
+  user-select: none;
+}
+
+.window-header .controls button {
+  margin-left: 5px;
+  padding: 2px 6px;
+  font-weight: bold;
+  background: #c33;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.window-content {
+  height: calc(100% - 35px);
+  padding: 10px;
+  overflow: auto;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  background: #fff;
+  font-family: monospace;
+  font-size: 14px;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#start-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#start-button img {
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+}
+
+.start-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px 5px;
+  border-top: 1px solid #ccc;
+  margin-top: 8px;
+}
+
+.start-footer button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(0,120,215,0.15);
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.start-footer button:hover {
+  background: rgba(0,120,215,0.3);
+}
+
+#mp3-player-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#mp3-file {
+  font-size: 14px;
+}
+
+#mp3-filename {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Open animation */
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Close animation */
+@keyframes windowClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.window {
+  animation: windowOpen 0.25s ease-out;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+function closeWindow(btn) {
+  const win = btn.closest('.window');
+  win.style.animation = 'windowClose 0.2s ease-in forwards';
+
+  setTimeout(() => {
+    win.remove();
+  }, 200); // Match the animation duration
+}
+
+  #cmd-window {
+    background: black;
+    color: lime;
+    font-family: monospace;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #cmd-output {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+
+  #cmd-input {
+    border: none;
+    background: black;
+    color: lime;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    outline: none;
+  }
+
+  #taskbar-search {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 2px 8px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+
+  #search-input {
+    border: none;
+    background: transparent;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 160px;
+    outline: none;
+    transition: all 0.2s ease;
+    color: #000;
+  }
+
+  #search-input::placeholder {
+    color: #666;
+  }
+
+  #search-input:focus {
+    width: 220px;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0,120,215,0.2);
+  }
+
+
+  #taskbar-icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+    color: #000;
+    font-size: 12px;
+  }
+
+  .taskbar-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  #taskbar-datetime {
+    text-align: right;
+    line-height: 1.2;
+  }
+
+  #vlc-ui {
+    background: #1e1e1e;
+    color: white;
+    padding: 10px;
+  }
+
+  #vlc-filename {
+    font-size: 13px;
+    color: #ccc;
+  }
+
+  #taskbar-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #000;
+    padding-right: 10px;
+  }
+
+  #start-menu {
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    width: 620px;
+    height: 400px;
+    background: #f2f2f2;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: flex;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 9999;
+    overflow: hidden;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  #start-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .start-left {
+    width: 210px;
+    background: #e5e5e5;
+    padding: 10px;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+  }
+
+  .start-left h3 {
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .start-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .start-list li {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .start-list li:hover {
+    background: #d0d0d0;
+  }
+
+  .start-list img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .start-right {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: #ffffff;
+  }
+
+  .tile {
+    width: 100px;
+    height: 100px;
+    background: #0078d7;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .tile:hover {
+    background: #005fa1;
+  }
+
+  .tile-large {
+    width: 210px;
+    height: 210px;
+  }
+
+  .tile img {
+    width: 40px;
+    margin-bottom: 6px;
+  }
+
+  .tile span {
+    font-size: 14px;
+  }
+
+  #vlc-player-ui {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #eee;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #555;
+  }
+
+  #vlc-file {
+    background: #333;
+    border: none;
+    color: #eee;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #vlc-filename {
+    font-size: 14px;
+    margin: 0;
+    padding-left: 5px;
+    color: #ccc;
+  }
+
+  #vlc-video {
+    flex-grow: 1;
+    width: 100%;
+    max-height: 400px;
+    background: black;
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px #000;
+  }
+
+  #tweetarama-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  #tweet-input {
+    width: 100%;
+    resize: none;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  #tweet-submit {
+    align-self: flex-end;
+    padding: 6px 14px;
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+  }
+
+  #tweet-submit:hover {
+    background-color: #0d8ddb;
+  }
+
+  #tweet-feed {
+    flex-grow: 1;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+
+  .tweet {
+    background: #e8f5fe;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 1px 3px rgb(29 161 242 / 0.2);
+    transition: transform 0.15s ease;
+  }
+
+  .tweet.new {
+    animation: tweetPop 0.3s ease forwards;
+  }
+
+  @keyframes tweetPop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  #desktop-widgets {
+    position: fixed;
+    right: 10px;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .widget {
+    width: 160px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .widget-header {
+    background: #0078d7;
+    color: #fff;
+    padding: 6px 8px;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .widget-body {
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .store-tile {
+    width: 150px;
+    height: 150px;
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .store-tile:hover {
+    transform: scale(1.05);
+  }
+  .store-tile img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    width: 400px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+  }
+  .modal.hidden {
+    display: none;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #4caf50;
+    transition: width 0.3s;
+  }
+
+  #app-details-modal {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    background: white;
+    padding: 20px;
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    z-index: 10000;
+    display: none;
+  }
+
+  #app-details-modal.hidden {
+    display: none;
+  }
+
+  #app-details-modal:not(.hidden) {
+    display: block;
+  }
+
+  #desktop-note {
+    position: fixed;
+    bottom: 45px; /* Above the taskbar */
+    right: 15px;  /* Align to right */
+    color: white;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    text-shadow: 0 1px 2px black;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  #desktop-top-note {
+    position: fixed;
+    bottom: 65px; /* distance from previous note */
+    right: 15px; /* aligned to right */
+    color: white;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    text-shadow: 0 1px 2px black;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  .start-power-fancy {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background: #e5e5e5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .start-power-fancy button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #0078d7;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .start-power-fancy button:hover {
+    background: #005fa1;
+  }
+
+  .start-power-fancy img {
+    filter: brightness(0) invert(1);
+  }
+
+  #start-menu.win10-start {
+    display: flex;
+    width: 660px;
+    height: 500px; /* taller */
+    background: #f3f3f3;
+    border-radius: 6px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+    font-family: 'Segoe UI', sans-serif;
+    flex-direction: row;
+    border: 1px solid #aaa;
+  }
+
+  .start-left {
+    width: 48%;
+    background: #fff;
+    padding: 12px;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+  }
+
+  .start-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .start-left li {
+    padding: 7px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .start-left li:hover {
+    background: #e0e0e0;
+  }
+
+  .all-apps-btn {
+    margin-top: 12px;
+    padding: 8px;
+    width: 100%;
+    background: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .all-apps-btn:hover {
+    background: #005fa1;
+  }
+
+  .start-right {
+    width: 52%;
+    background: #1d1d1d;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    color: white;
+    overflow-y: auto;
+  }
+
+  .tile {
+    background: #0078d7;
+    padding: 16px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .tile:hover {
+    background: #005fa1;
+  }
+
+  .start-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #e5e5e5;
+    border-top: 1px solid #ccc;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .power-btn {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .power-btn:hover {
+    background: #992d22;
+  }

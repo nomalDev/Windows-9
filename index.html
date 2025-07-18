@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Windows 9</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="StartButton.png" type="image/png">
+</head>
+<body> 
+
+  
+  <div id="desktop">
+    <div class="icon" onclick="openApp('youtube')">
+      <img src="YouTubeIcon.png" alt="" />
+      <p>YouTube</p>
+    </div>
+    <div class="icon" onclick="openApp('notepad')">
+      <img src="NotepadIcon.jpg" alt="" />
+      <p>Notepad</p>
+    </div>
+    <div class="icon" onclick="openApp('paint')">
+      <img src="PaintIcon.png" alt="" />
+      <p>Paint</p>
+    </div>
+    <div class="icon" onclick="openApp('explorer')">
+      <img src="ExplorerIcon.jpg" alt="" />
+      <p>Explorer</p>
+    </div>
+    <div class="icon" onclick="openApp('chrome')">
+      <img src="GoogleChromeIcon.png" alt="" />
+      <p>Chrome</p>
+    </div>
+    <div class="icon" onclick="openApp('minesweeper')">
+      <img src="MinesweeperIcon.jpg"
+        alt="" />
+      <p>Minesweeper</p>
+    </div>
+      <div class="icon" onclick="openApp('solitaire')">
+        <img src="SolitaireIcon.jpg" alt="" />
+        <p>Solitaire</p>
+      </div>
+    <div class="icon" onclick="openApp('cmd')">
+      <img src="CMDIcon.jpg" alt="" />
+      <p>Command Prompt</p>
+    </div>
+    <div class="icon" onclick="openApp('credits')">
+      <img src="NoteIcon.png" alt="" />
+      <p>Credits</p>
+    </div>
+    <div class="icon" onclick="openApp('firefox')">
+      <img src="FirefoxIcon.png" />
+      <p>Firefox 77.0.1 Remake</p>
+    </div>
+    <div class="icon" onclick="openApp('supermium')">
+      <img src="SupermiumIcon.png" />
+      <p>Supermium For Windows 9</p>
+    </div>
+    <div class="icon" onclick="openApp('tweetarama')">
+        <img src="TweetAtRama.png" alt="" />
+        <p>Tweet@rama<p>
+    </div>
+
+
+
+    <div id="desktop-top-note">Windows 9 Pro Beta 1</div>
+    <div id="desktop-note">For testing purposes only. Build 1.0 This version of Windows is activated.</div>
+
+    
+  </div>
+
+
+  <!-- START MENU -->
+  <div id="start-menu" class="win10-start">
+    <div class="start-left">
+      <ul>
+        <li onclick="openApp('explorer')">This PC</li>
+        <li onclick="openApp('mail')">Mail</li>
+        <li onclick="openApp('weather')">Weather</li>
+        <li onclick="openApp('store')">Store</li>
+        <li onclick="openApp('paint')">Paint</li>
+        <li onclick="openApp('notepad')">Notepad</li>
+        <li onclick="openApp('calculator')">Calculator</li>
+      </ul>
+    </div>
+
+    <div class="start-right">
+      <div class="tile" onclick="openApp('explorer')">Explorer</div>
+      <div class="tile" onclick="openApp('cmd')">Command Prompt</div>
+      <div class="tile" onclick="openApp('tweetarama')">Tweet@rama</div>
+      <div class="tile" onclick="openApp('supermium')">Supermium</div>
+      <div class="tile" onclick="openApp('youtube')">YouTube</div>
+      <div class="tile" onclick="openApp('store')">Store</div>
+    </div>
+
+    <div class="start-footer">
+      <button class="power-btn" onclick="shutdownSystem()">⏻ Shut Down</button>
+      <button class="power-btn" onclick="restartSystem()">⟳ Restart</button>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div id="taskbar">
+    <button id="start-button" onclick="toggleStartMenu()">
+      <img src="StartButton.png" alt="Start" />
+    </button>
+    
+    <div id="taskbar-search">
+      <input type="text" id="search-input" placeholder="Search apps..." />
+    </div>
+
+
+    
+    <div id="taskbar-apps"></div>
+    <div id="taskbar-icons">
+      <img src="InternetIcon.png" alt="Internet" class="taskbar-icon">
+      <img src="SoundIcon.png" alt="Sound" class="taskbar-icon">
+      <div id="taskbar-datetime">
+        <div id="taskbar-time"></div>
+        <div id="taskbar-date"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="windows-container"></div>
+
+   <audio id="startup-sound" src="startup.mp3"></audio>
+  <audio id="error-beep" src="error.wav" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
