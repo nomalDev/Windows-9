@@ -4,6 +4,14 @@
 
 This project recreates the feel of a real desktop environment directly in your browser, complete with icons, a taskbar, start menu, draggable windows, and interactive apps.
 
+## 🖼️ Looks
+
+![Screenshot of Windows 9](https://github.com/nomalDev/Windows-9/blob/main/Replica%20Of%20Windows%209.png)
+Windows 9 Pro Beta 1.
+
+![Screenshot of Windows 10 Technical Preview](https://news-cdn.softpedia.com/images/news2/Windows-9-Technical-Preview-459675-2.jpg)
+Windows 10 Technical Preview aka called as Windows 9.
+
 ## 🔍 Features
 
 - Start menu with faux apps
